@@ -1,0 +1,19 @@
+<ion-view view-title="Login" hide-nav-bar="true">
+	<ion-content class="padding" style="background: #3B5998;">
+		<div class="list" style="padding-top: 20%">
+			<center>
+				<p style="color: white; font-size: 2em !important">المكتبه الرقمية</p>
+				<label class="item item-input" style="margin-top: 40%">
+					<input type="text" placeholder="البريد الإلكتروني" ng-model="cred.email">
+				</label>
+				<label class="item item-input">
+					<input type="password" placeholder="كلمة المرور" ng-model="cred.password">
+				</label>
+				<br>
+				<button class="button" style="background: #4267B2; color: white; width: 100%" ng-click="login()">
+				تسجيل الدخول
+				</button>
+			</center>
+		</div>
+	</ion-content>
+</ion-view>

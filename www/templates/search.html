@@ -1,0 +1,36 @@
+  <ion-modal-view>
+    <ion-header-bar class="bar bar-dark rtl">
+		<div class="item item-input-inset" style="width: 100%">
+		    <input onfocus="console.log('a')" onfocusout="console.log('b')" ng-model-options="{debounce:100}" type="text" placeholder="بحث عن كتب.." ng-model="search.query" ng-change="findBooks()">
+		</div>
+    </ion-header-bar>
+    <ion-content class="padding rtl" overflow-scroll="false" has-bouncing="true">
+			<div class="list list-inset">
+
+			    <div class="item" ng-repeat="book in books" ng-click="openBook(book)">
+			    	{{book.book_name}}
+			    	<p> {{book.book_author}} - {{book.book_date}} </p>
+			    </div>
+
+			    <ion-infinite-scroll
+			        ng-if="!notFound && !books.length"
+			        distance="1%">
+			      </ion-infinite-scroll>
+
+				<div ng-if="notFound">
+					<center>
+						<img src="../img/search.png" style="width: 30%">
+						<h3><span style="color: grey; font-style: italic">غير موجود</span></h3>
+					</center>
+				</div>
+
+				<!-- <div style="height: 15vh; width: 100%; display: block; opacity: 0"></div> -->
+
+			</div>
+    </ion-content>
+    <div class="bar bar-footer">
+	    <button class="button button-outline button-dark center" ng-click="closeSearchModal()">
+	      <i class="icon ion-chevron-left"></i>
+	    </button>
+    </div>
+  </ion-modal-view>

@@ -1,0 +1,72 @@
+<ion-view hide-nav-bar="true">
+  <ion-header-bar class="bar bar-dark">
+    <h1 class="title" style="text-align: center">
+      <i style="float: right; width: 7%;" class="icon ion-settings" ng-click="openSettings()">
+      </i>
+      <span style="margin-right: -7%">كتبك المفضلة</span>
+    </h1>
+  </ion-header-bar>
+  <ion-content>
+    <div class="list list-inset">
+        <div ng-repeat="book in books">
+          <div class="item" ng-click="openBook(book)">
+            {{book.book_name}}
+            <p> {{book.book_author}} - {{book.book_date}} </p>
+          </div>
+          <center>
+            <a class="button" style="width: 100%" ng-click="openPDFLocally(book)">افتح الكتاب محلياَ</a>
+          </center>
+          <br><br>
+        </div>
+
+        <div ng-show="!books.length" style="margin-top: 45%">
+          <center>
+            <img src="img/books.png" style="width: 50%">
+            <h3><span style="color: grey; font-style: italic">لا يوجد كتب الآن في مكتبتك</span></h3>
+          </center>
+        </div>
+    
+    </div>
+  </ion-content>
+</ion-view>
+
+<script id="settingsModal.html" type="text/ng-template">
+  <ion-modal-view>
+    <ion-header-bar class="bar bar-dark">
+    <h1 class="title" style="text-align: center">
+
+      <span>إعدادات</span>
+
+    </h1>
+    </ion-header-bar>
+    <ion-content>
+      <h5 style="direction: rtl;font-weight: bold; color: grey">الإعدادات:</h5>
+
+      <div class="list list-inset" style="direction: rtl;">
+          <div class="item" ng-click="cacheAll()">
+          حفظ كل الكتب المتاحه
+          </div>      
+
+          <div class="item" ng-click="logout()">
+          تسجيل خروج
+          </div>
+
+          <div ng-show="max && max != value">
+          <br>
+            <p style="font-style: italic; color: grey">
+              جاري تحميل {{value}} كتب من {{max}} ...
+            </p>
+            <progress id="cacheAllProgress">
+          </div>
+          <div ng-show="value == allBooks.length">
+            <center>
+              <p style="font-style: italic; color: green">
+                تم حفظ كل الكتب بنجاح
+              </p>
+            </center>
+          </div>
+      </div>
+    </ion-content>
+  </ion-modal-view>
+</script>
+
